@@ -1,3 +1,4 @@
+var planner = {9:"xx",10:"",11:"",12:"",13:"",14:"",15:"",16:"",17:""};
 
 //fn returns curent time
 function getTime() {
@@ -27,6 +28,34 @@ setInterval(function () {
     $('#currentDay').text(getTime());
     setBGcolor();
 }, 1000);
+
+
+
+//fn read planner from local storage
+$( document ).ready(function() {
+    var tasks = $('textarea');
+    tasks.each(function (index) {
+        tasks[index].value = JSON.parse(localStorage.getItem('planner'))[index + 9];       
+    });
+
+});
+
+
+// set click event on save button
+$('.saveBtn').on('click', function () {
+    var hourFound = $(this).parent().prev().prev().html().split(':')[0];
+    var taskInput = $(this).parent().prev().children().val();
+
+    if (localStorage.getItem('planner') === null) {
+        localStorage.setItem('planner', JSON.stringify(planner));
+    }else{
+        var plannerUpdate = JSON.parse(localStorage.getItem('planner'));
+        plannerUpdate[Number(hourFound)] = taskInput;
+        localStorage.setItem('planner', JSON.stringify(plannerUpdate));
+
+        console.log(JSON.parse(localStorage.getItem('planner')));        
+    }
+});
 
 
 
