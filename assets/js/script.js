@@ -1,4 +1,5 @@
-var planner = {9:"xx",10:"",11:"",12:"",13:"",14:"",15:"",16:"",17:""};
+
+var planner = {9:"",10:"",11:"",12:"",13:"",14:"",15:"",16:"",17:""};
 
 //fn returns curent time
 function getTime() {
@@ -32,19 +33,18 @@ setInterval(function () {
 
 
 //fn read planner from local storage
-$( document ).ready(function() {
+function readPlanner() {
     var tasks = $('textarea');
     tasks.each(function (index) {
         tasks[index].value = JSON.parse(localStorage.getItem('planner'))[index + 9];       
     });
-
-});
+};
 
 
 // set click event on save button
 $('.saveBtn').on('click', function () {
-    var hourFound = $(this).parent().prev().prev().html().split(':')[0];
-    var taskInput = $(this).parent().prev().children().val();
+    var hourFound = $(this).prev().prev().html().split(':')[0];
+    var taskInput = $(this).prev().children().val();
 
     if (localStorage.getItem('planner') === null) {
         localStorage.setItem('planner', JSON.stringify(planner));
@@ -56,6 +56,18 @@ $('.saveBtn').on('click', function () {
         console.log(JSON.parse(localStorage.getItem('planner')));        
     }
 });
+
+
+// clear tasks from local storage
+$('.removeBtn').on('click', function () {
+    localStorage.setItem('planner', JSON.stringify(planner));
+    readPlanner();
+    console.log(JSON.parse(localStorage.getItem('planner')));
+
+});
+
+readPlanner();
+
 
 
 
