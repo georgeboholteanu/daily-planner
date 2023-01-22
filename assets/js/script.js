@@ -52,12 +52,14 @@ $('.saveBtn').on('click', function () {
         var plannerUpdate = JSON.parse(localStorage.getItem('planner'));
         plannerUpdate[Number(hourFound)] = taskInput;
         localStorage.setItem('planner', JSON.stringify(plannerUpdate));
-          
-        $('.savedMessage').text('Task Saved!');
-        setTimeout(function () {                               
-            $('.savedMessage').text('');            
-                
-        },3000);   
+        
+        if (taskInput !== "") {
+            $('.savedMessage').text('Task Saved!');
+            setTimeout(function () {                               
+                $('.savedMessage').text('');            
+                    
+            },3000);   
+        }
            
     }
 });
