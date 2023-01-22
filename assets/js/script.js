@@ -60,12 +60,17 @@ $('.saveBtn').on('click', function () {
 
 // clear tasks from local storage
 $('.removeBtn').on('click', function () {
-    localStorage.setItem('planner', JSON.stringify(planner));
-    readPlanner();
-    console.log(JSON.parse(localStorage.getItem('planner')));
+    const answer = confirm("Are you sure?");
 
+    if (answer) {
+        localStorage.setItem('planner', JSON.stringify(planner));
+        readPlanner();
+    }else{
+        return false;
+
+    }
 });
-
+  
 readPlanner();
 
 
