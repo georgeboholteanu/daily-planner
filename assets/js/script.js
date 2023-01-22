@@ -10,7 +10,7 @@ function getTime() {
 
 //fn sets planner CSS
 function setBGcolor() {
-    var tdd = $('td[class="hour"]');
+    var tdd = $('td[class="time-block"]');
     tdd.each(function (index) {
         var eL = tdd[index];
         if ($(tdd[index]).html().split(":")[0] < moment().format('HH')) {         
@@ -60,7 +60,7 @@ $('.saveBtn').on('click', function () {
 
 // clear tasks from local storage
 $('.removeBtn').on('click', function () {
-    const answer = confirm("Are you sure?");
+    const answer = confirm("Are you sure to delete all todos?");
 
     if (answer) {
         localStorage.setItem('planner', JSON.stringify(planner));
