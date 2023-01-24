@@ -23,6 +23,7 @@ textarea {
 
 .description {
   white-space: pre-wrap;
+  border-top: 1px solid white;
 }
 
 .time-block {
@@ -66,7 +67,7 @@ textarea {
 }
 
 .fa-floppy-disk:hover {
-  font-size: 30px;
+  font-size: 20px;
   color:orange;
   transition: all 0.3s ease-in-out;
 }
@@ -79,7 +80,7 @@ textarea {
 }
 
 .fa-trash-can:hover {
-  font-size: 30px;
+  font-size: 20px;
   color:orange;
   transition: all 0.3s ease-in-out;
 }

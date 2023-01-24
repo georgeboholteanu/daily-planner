@@ -10,7 +10,7 @@ function getTime() {
 
 //fn sets planner CSS
 function setBGcolor() {
-    var tdd = $('td[class="time-block"]');
+    var tdd = $('td[class="hour"]');
     tdd.each(function (index) {
         var eL = tdd[index];
         if ($(tdd[index]).html().split(":")[0] < moment().format('HH')) {         
