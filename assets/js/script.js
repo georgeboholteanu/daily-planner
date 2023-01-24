@@ -13,12 +13,12 @@ function setBGcolor() {
     var tdd = $('td[class="hour"]');
     tdd.each(function (index) {
         var eL = tdd[index];
-        if ($(tdd[index]).html().split(":")[0] < moment().format('HH')) {         
-            $(eL).next().addClass("past");
-        }else if ($(eL).html().split(":")[0] > moment().format('HH')) {
-            $(eL).next().addClass("future");
+        if ($(tdd[index]).text().split(":")[0] < moment().format('HH')) {         
+            $(eL).next().children().addClass("past");
+        }else if ($(eL).text().split(":")[0] > moment().format('HH')) {
+            $(eL).next().children().addClass("future");
         }else {
-            $(eL).next().addClass("present");
+            $(eL).next().children().addClass("present");
         }
     });
 }
@@ -43,7 +43,7 @@ function readPlanner() {
 
 // set click event on save button
 $('.saveBtn').on('click', function () {
-    var hourFound = $(this).prev().prev().html().split(':')[0];
+    var hourFound = $(this).prev().prev().text().split(':')[0];
     var taskInput = $(this).prev().children().val();
 
     if (localStorage.getItem('planner') === null) {
@@ -58,7 +58,7 @@ $('.saveBtn').on('click', function () {
             setTimeout(function () {                               
                 $('.savedMessage').text('');            
                     
-            },3000);   
+            },2000);   
         }
            
     }
